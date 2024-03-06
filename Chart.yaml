@@ -1,0 +1,4 @@
+apiVersion: v2
+name: my-denodo-chart
+description: A Helm chart for denodo
+version: 0.1.0

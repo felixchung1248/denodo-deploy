@@ -25,4 +25,4 @@ spec:
           args: ["--vdpserver", "--designstudio", "--datacatalog"]
           env:
             - name: DENODO_WEBCONTAINER_STARTUP
-              value: true
+              value: "true"

@@ -22,4 +22,4 @@ spec:
             - containerPort: 9996
             - containerPort: 9995
             - containerPort: 9090
-          #args: ["--vdpserver", "--designstudio", "--datacatalog"]
+          args: ["--vdpserver", "--designstudio", "--datacatalog"]

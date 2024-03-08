@@ -23,3 +23,6 @@ spec:
             - containerPort: 9995
             - containerPort: 9090
           args: ["--vdpserver", "--designstudio", "--datacatalog"]
+          env:
+            - name: DENODO_WEBCONTAINER_STARTUP
+              value: true

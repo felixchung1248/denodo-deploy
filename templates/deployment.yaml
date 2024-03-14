@@ -26,3 +26,10 @@ spec:
           env:
             - name: DENODO_WEBCONTAINER_STARTUP
               value: "true"
+          volumeMounts:
+            - mountPath: "/opt/denodo"
+              name: denodo-storage
+      volumes:
+        - name: "{{ include "denodo.name" . }}-storage"
+        persistentVolumeClaim:
+          claimName: "{{ include "denodo.name" . }}-pvc"

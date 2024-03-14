@@ -31,5 +31,5 @@ spec:
               name: denodo-storage
       volumes:
         - name: {{ include "denodo.name" . }}-storage
-        persistentVolumeClaim:
-          claimName: {{ include "denodo.name" . }}-pvc
+          persistentVolumeClaim:
+            claimName: {{ include "denodo.name" . }}-pvc

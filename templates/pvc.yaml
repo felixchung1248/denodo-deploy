@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: "{{ include "denodo.name" . }}-pvc"
+  name: {{ include "denodo.name" . }}-pvc
 spec:
   accessModes:
     - ReadWriteOnce

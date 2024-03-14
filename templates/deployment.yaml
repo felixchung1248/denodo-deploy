@@ -30,6 +30,6 @@ spec:
             - mountPath: "/opt/denodo"
               name: denodo-storage
       volumes:
-        - name: "{{ include "denodo.name" . }}-storage"
+        - name: {{ include "denodo.name" . }}-storage
         persistentVolumeClaim:
-          claimName: "{{ include "denodo.name" . }}-pvc"
+          claimName: {{ include "denodo.name" . }}-pvc

@@ -12,6 +12,14 @@ spec:
       labels:
         app: {{ include "denodo.name" . }}
     spec:
+      initContainers:
+        - name: init-volume
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["/bin/sh", "-c", 'if [ -z "$(ls -A /tmp)" ]; then cp -R /opt/denodo/metadata/* /tmp/; fi']
+          volumeMounts:
+          - name:  {{ include "denodo.name" . }}-storage
+            mountPath:  /tmp
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -27,7 +35,7 @@ spec:
             - name: DENODO_WEBCONTAINER_STARTUP
               value: "true"
           volumeMounts:
-            - mountPath: "/opt/denodo"
+            - mountPath: "/opt/denodo/metadata"
               name: {{ include "denodo.name" . }}-storage
       volumes:
         - name: {{ include "denodo.name" . }}-storage

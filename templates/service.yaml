@@ -5,10 +5,17 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
+    - name: web
+      port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}
       {{- if and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePort)) }}
       nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
+    - name: meta
+      port: 9999
+      targetPort: 9999
+      {{- if and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePortMeta)) }}
+      nodePort: {{ .Values.service.nodePortMeta }}
       {{- end }}
   selector:
     app: {{ include "denodo.name" . }}

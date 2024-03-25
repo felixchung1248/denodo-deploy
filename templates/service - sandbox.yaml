@@ -17,5 +17,11 @@ spec:
       {{- if and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePortMetaSandbox)) }}
       nodePort: {{ .Values.service.nodePortMetaSandbox }}
       {{- end }}
+    - name: db
+      port: 9996
+      targetPort: 9996
+      {{- if and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePortDbSandbox)) }}
+      nodePort: {{ .Values.service.nodePortDbSandbox }}
+      {{- end }}
   selector:
     app: {{ printf "%s-sandbox" (include "denodo.name" .) | trunc 63 | trimSuffix "-" }}

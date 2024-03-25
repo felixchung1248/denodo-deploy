@@ -13,3 +13,5 @@ service:
   nodePortSandbox: 30290
   nodePortMeta: 30999
   nodePortMetaSandbox: 31999
+  nodePortDb: 30996
+  nodePortDbSandbox: 31996

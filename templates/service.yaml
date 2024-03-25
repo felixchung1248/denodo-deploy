@@ -17,5 +17,11 @@ spec:
       {{- if and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePortMeta)) }}
       nodePort: {{ .Values.service.nodePortMeta }}
       {{- end }}
+    - name: db
+      port: 9996
+      targetPort: 9996
+      {{- if and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePortDb)) }}
+      nodePort: {{ .Values.service.nodePortDb }}
+      {{- end }}
   selector:
     app: {{ include "denodo.name" . }}
